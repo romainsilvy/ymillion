@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Pusher Test</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Ynauguration</title>
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <script>
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -13,13 +16,27 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
-            console.log(data)
             let isCorrect = data.correctAnswer;
 
             if (isCorrect) {
                 let questionId = data.questionId;
                 document.getElementById('question-' + questionId).classList.remove('unanswered');
                 document.getElementById('question-' + questionId).classList.add('answered');
+                Toastify({
+
+                    text: "Bonne réponse !",
+
+                    duration: 3000
+
+                }).showToast();
+            } else {
+                Toastify({
+
+                    text: "Mauvaise réponse !",
+
+                    duration: 3000
+
+                }).showToast();
             }
         });
     </script>
@@ -112,7 +129,7 @@
 <body>
     <div class="game">
         <div class="game-details">
-        <img class="qr-code" src="{{ url('/images/vote.svg') }}" alt="QR Code">
+            <img class="qr-code" src="{{ url('/images/vote.svg') }}" alt="QR Code">
         </div>
         <div class="questions-container">
             <img class="image-behind"
