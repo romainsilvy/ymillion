@@ -133,8 +133,9 @@
         </div>
         <div class="questions-container">
             <img class="image-behind"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnyVeM6bfKMDJi1C6AHkcX_Id53PlYdP2CqFKdg55PjI1lG_dcsKT2U0IhuPlaB9KIEhU&usqp=CAU"
-                alt="Image Behind Questions">
+                src="{{ url('/images/background.png') }}"
+                alt="Image Behind Questions"
+                style="object-fit: cover">
 
             <!-- Questions -->
             @foreach ($questions as $question)
